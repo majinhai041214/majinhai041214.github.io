@@ -32,3 +32,6 @@ highlighter: rouge
 kramdown:
   input: GFM
 
+excerpt_separator: "<!--more-->"
+
+
