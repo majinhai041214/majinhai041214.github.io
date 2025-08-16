@@ -26,3 +26,9 @@ lang: zh-CN
 
 # 这些目录不参与构建
 exclude: ['package.json', 'src', 'node_modules']
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+
