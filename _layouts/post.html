@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title }} · {{ site.title }}</title>
 
-  <!-- 样式 -->
+  <!-- 站点样式 -->
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/post.css"  | relative_url }}">
+  <!-- 代码高亮样式（可选：如果你有 /assets/css/rouge.css 就会生效） -->
+  <link rel="stylesheet" href="{{ "/assets/css/rouge.css" | relative_url }}">
 </head>
 <body class="post-light">
   <main class="post-wrap">
@@ -49,5 +51,20 @@
       </nav>
     </footer>
   </main>
+
+  <!-- MathJax：渲染 Markdown 里的 LaTeX 数学公式 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre'] // 预/code 内不解析
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
