@@ -15,7 +15,9 @@ permalink: /blog/
 </div>
 
 <ul id="list" class="post-list">
-  {% for post in site.posts %}
+  {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+  {% for post in sorted_posts %}
+
   <li class="post-card"
       data-title="{{ post.title | downcase }}"
       data-excerpt="{{ post.excerpt | strip_html | downcase }}">
