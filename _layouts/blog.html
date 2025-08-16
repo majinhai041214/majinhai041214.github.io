@@ -7,10 +7,20 @@
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/blog.css"  | relative_url }}">
 </head>
-<body>
-  <div class="blog-container">
+<body class="blog-dark">
+  <!-- 固定粒子背景 -->
+  <div id="particles-js" class="particles-fixed"></div>
+
+  <!-- 内容 -->
+  <main class="blog-wrap">
     {{ content }}
-  </div>
+  </main>
+
+  <!-- 粒子脚本（Particle 主题自带） -->
+  <script src="{{ "/assets/js/particles.min.js" | relative_url }}"></script>
+  <script>
+    /* 复用你站点的 particles.json；如需单独配置，可改成 /assets/js/particles-blog.json */
+    particlesJS.load('particles-js', '{{ "/assets/js/particles.json" | relative_url }}');
+  </script>
 </body>
 </html>
-
