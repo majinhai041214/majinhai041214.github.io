@@ -84,3 +84,50 @@
 @media (max-width:520px){
   .post-title{ font-size:20px; }
 }
+/* 1) 让“博客文章”剧中（包含副标题） */
+.blog-hero{
+  text-align: center !important;
+}
+
+/* 2) 链接颜色统一为清爽蓝青色（不影响渐变按钮 .read-link） */
+:root{
+  --link: #8bd5ff;          /* 你也可以改成 #64d2ff / #7dd3fc 等 */
+  --link-hover: #c0ecff;
+}
+.blog-wrap a:not(.read-link){
+  color: var(--link) !important;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(139,213,255,.35);
+}
+.blog-wrap a:not(.read-link):hover{
+  color: var(--link-hover) !important;
+  border-bottom-color: rgba(139,213,255,.6);
+}
+
+/* 3) 搜索框毛玻璃虚化 + 发光聚焦效果 */
+.search{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  backdrop-filter: blur(8px);              /* 毛玻璃关键 */
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--txt) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+}
+.search:focus{
+  border-color: rgba(108,159,255,.55) !important;
+  box-shadow:
+    0 0 0 3px rgba(108,159,255,.18),
+    inset 0 0 0 1px rgba(166,88,255,.15);
+}
+
+/* 让卡片与搜索在大屏更居中对齐些（可选） */
+.blog-wrap{ max-width: 980px; }   /* 想更窄可改 920/900 */
+
+.blog-hero h1{
+  background: linear-gradient(90deg, #6c9fff, #a658ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 6px 22px rgba(108,159,255,.25);
+}
+
