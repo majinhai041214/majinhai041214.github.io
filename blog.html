@@ -6,7 +6,7 @@ permalink: /blog/
 
 <section class="blog-hero">
   <h1>博客文章</h1>
-  <p>记录 · 学习 · 折腾</p>
+  <p>暗黑 · 粒子 · 单列长页</p>
 </section>
 
 <div class="top-actions">
@@ -14,17 +14,15 @@ permalink: /blog/
   <input id="search" class="search" type="search" placeholder="搜索标题或摘要…">
 </div>
 
-<div id="grid" class="post-grid">
-  {% assign posts = site.posts %}
-  {% for post in posts %}
-  <article class="post-card" data-title="{{ post.title | downcase }}" data-excerpt="{{ post.excerpt | strip_html | downcase }}">
+<div id="list" class="post-list">
+  {% for post in site.posts %}
+  <article class="post-card"
+           data-title="{{ post.title | downcase }}"
+           data-excerpt="{{ post.excerpt | strip_html | downcase }}">
     <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-    <h3 class="post-title">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </h3>
-    <p class="post-excerpt">
-      {{ post.excerpt | strip_html | truncate: 120 }}
-    </p>
+    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+
     {% if post.tags and post.tags.size > 0 %}
     <div class="tags">
       {% for t in post.tags %}
@@ -32,19 +30,20 @@ permalink: /blog/
       {% endfor %}
     </div>
     {% endif %}
+
     <a class="read-link" href="{{ post.url | relative_url }}">阅读全文</a>
   </article>
   {% endfor %}
 </div>
 
 <script>
-  // 简易搜索：前端过滤标题/摘要
-  const input = document.getElementById('search');
+  // 前端搜索：过滤标题/摘要（保持单列）
+  const q = document.getElementById('search');
   const cards = [...document.querySelectorAll('.post-card')];
-  input?.addEventListener('input', (e) => {
-    const q = e.target.value.trim().toLowerCase();
+  q?.addEventListener('input', (e) => {
+    const s = e.target.value.trim().toLowerCase();
     cards.forEach(c => {
-      const hit = c.dataset.title.includes(q) || c.dataset.excerpt.includes(q);
+      const hit = c.dataset.title.includes(s) || c.dataset.excerpt.includes(s);
       c.style.display = hit ? '' : 'none';
     });
   });
