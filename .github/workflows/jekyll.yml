@@ -2,7 +2,7 @@ name: Jekyll site CI
 
 on:
   push:
-    branches: [ main,master ]
+    branches: [ master ]   # 👈 注意：你的分支是 master，不是 main
   workflow_dispatch:
 
 jobs:
@@ -12,10 +12,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.1'   # 推荐 3.1，Jekyll 更兼容
           bundler-cache: true
-      - run: bundle install
-      - run: bundle exec jekyll build
+      - run: |
+          gem install bundler
+          bundle install
+          bundle exec jekyll build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
