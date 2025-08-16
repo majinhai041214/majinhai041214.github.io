@@ -1,85 +1,128 @@
-/* ====== 暗黑单列博客目录页 ====== */
+/* ====== 博客目录页 · 暗黑玻璃拟态升级版 ====== */
 :root{
-  --bg:#0f172a;           /* 深色背景，贴合首页 */
-  --txt:#e6edf3;
+  --bg:#0c1323;              /* 更深一些，质感更强 */
+  --txt:#e8eef6;
   --muted:#9aa4b2;
-  --border:rgba(255,255,255,.12);
   --card:rgba(255,255,255,.06);
-  --accent:#6c9fff;       /* 霓虹蓝 */
-  --accent2:#a658ff;      /* 霓虹紫 */
+  --border:rgba(255,255,255,.12);
+  --neo:#6c9fff;             /* 霓虹蓝 */
+  --neo2:#a658ff;            /* 霓虹紫 */
 }
 
-/* 固定粒子背景 */
+html, body.blog-dark{ background:var(--bg) !important; color:var(--txt); }
 .particles-fixed{ position:fixed; inset:0; z-index:-1; background:var(--bg); }
 
-/* 页面基础 */
-.blog-dark{ background:var(--bg); color:var(--txt); }
-.blog-wrap{ max-width: 860px; margin: 0 auto; padding: 80px 18px 72px; }
+/* 容器更宽一点，视觉更舒展 */
+.blog-wrap{ max-width: 1080px; margin:0 auto; padding: 84px 24px 90px; }
 
-/* 顶部 */
-.blog-hero{ text-align:center; margin-bottom: 16px; }
-.blog-hero h1{ margin:0 0 6px; font-size:clamp(28px,3.6vw,40px); font-weight:900; color:var(--txt); }
+/* 顶部英雄区：淡淡的霓虹光晕 + 标题更“饱满” */
+.blog-hero{
+  padding: 26px 0 10px;
+  background:
+    radial-gradient(900px 260px at 20% -10%, rgba(108,159,255,.18), transparent),
+    radial-gradient(900px 260px at 80% -10%, rgba(166,88,255,.18), transparent);
+  border-radius: 18px;
+}
+.blog-hero h1{
+  margin: 0 0 8px;
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 900;
+  letter-spacing: .5px;
+  background: linear-gradient(90deg, var(--neo), var(--neo2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;            /* 霓虹渐变文字 */
+  text-shadow: 0 6px 22px rgba(108,159,255,.25);
+}
 .blog-hero p{ margin:0; color:var(--muted); }
 
-/* 操作行：返回 + 搜索 */
-.top-actions{ display:flex; align-items:center; gap:12px; margin: 14px 0 6px; }
+/* 顶部操作区：返回 + 搜索框（带霓虹边） */
+.top-actions{ display:flex; align-items:center; gap:12px; margin: 16px 0 8px; }
 .back-home{
   text-decoration:none; color:var(--txt);
-  border:1px solid var(--border); border-radius:10px; padding:8px 12px;
-  background: rgba(255,255,255,.06);
+  border:1px solid var(--border); border-radius:12px; padding:10px 14px;
+  background: rgba(255,255,255,.05);
+  transition: all .2s ease;
+}
+.back-home:hover{
+  border-color: rgba(108,159,255,.5);
+  box-shadow: 0 0 0 1px rgba(108,159,255,.25) inset;
 }
 .search{
-  flex:1; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
-  background: rgba(255,255,255,.06); color:var(--txt); outline:none;
+  flex:1; padding:12px 14px; border-radius:12px; outline:none;
+  border:1px solid var(--border); background: rgba(255,255,255,.05); color:var(--txt);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.search:focus{
+  border-color: rgba(108,159,255,.6);
+  box-shadow: 0 0 0 3px rgba(108,159,255,.18);
 }
 
-/* 单列文章卡片 */
-.post-list{ display:block; margin-top: 8px; }
+/* 单列文章卡：更柔和的玻璃拟态 + 阴影更高级 */
+.post-list{ display:block; margin-top: 10px; }
+
 .post-card{
-  list-style:none;
-  position:relative;
-  margin:14px 0;
-  padding:18px 18px 16px;
-  border-radius:16px;
-  background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
-  border:1px solid var(--border);
-  box-shadow: 0 12px 28px rgba(0,0,0,.25);
+  position:relative; list-style:none;
+  margin:18px 0; padding:22px 22px 18px;
+  border-radius:20px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.35),
+    inset 0 0 0 1px rgba(255,255,255,.03);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .post-card:hover{
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: rgba(108,159,255,.55);
-  box-shadow: 0 18px 36px rgba(108,159,255,.22), 0 0 0 1px rgba(166,88,255,.18) inset;
+  box-shadow:
+    0 30px 60px rgba(108,159,255,.20),
+    inset 0 0 0 1px rgba(166,88,255,.20);
 }
 
+/* 日期徽章更“芯片化” */
 .post-date{
-  position:absolute; right:14px; top:14px;
+  position:absolute; right:18px; top:16px;
   font-size:12px; color:var(--muted);
-  border:1px solid var(--border); border-radius:999px; padding:3px 8px;
-  background: rgba(255,255,255,.04);
+  padding: 5px 10px; border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(14,22,40,.6);
+  backdrop-filter: blur(6px);
 }
 
-.post-title{ margin:0 0 6px; font-size:22px; font-weight:800; }
+/* 标题/摘要层次更清晰 */
+.post-title{ margin:0 0 8px; font-size:24px; font-weight:900; }
 .post-title a{ color:var(--txt); text-decoration:none; }
-.post-title a:hover{ color:#9cc3ff; }
+.post-title a:hover{ color:#b8d3ff; text-shadow:0 0 18px rgba(108,159,255,.25); }
 
-.post-excerpt{ margin:6px 0 10px; color:var(--muted); line-height:1.7; }
+.post-excerpt{ margin:6px 0 12px; color:var(--muted); line-height:1.75; }
 
+/* 标签小胶囊 */
 .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
 .tag{
   font-size:12px; color:var(--txt);
-  border:1px solid var(--border); border-radius:999px; padding:3px 8px;
-  background: rgba(108,159,255,.08);
+  padding:4px 10px; border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(108,159,255,.10);
 }
 
+/* 霓虹按钮 */
 .read-link{
-  display:inline-block; margin-top:12px; text-decoration:none; color:#fff;
-  padding:9px 14px; border-radius:10px; font-size:14px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transition: transform .2s ease, box-shadow .2s ease;
+  display:inline-block; margin-top:14px; text-decoration:none; color:#fff;
+  padding:10px 16px; border-radius:12px; font-size:14px; font-weight:600;
+  background: linear-gradient(90deg, var(--neo), var(--neo2));
+  box-shadow: 0 8px 22px rgba(108,159,255,.35);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
-.read-link:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(108,159,255,.35); }
+.read-link:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(108,159,255,.45);
+  filter: saturate(1.1);
+}
 
-/* 兜底：强制去掉任何浅色背景 */
-.blog-hero{ background:none !important; }
-html, body.blog-dark{ background:var(--bg) !important; }
+/* 小屏微调 */
+@media (max-width:560px){
+  .post-title{ font-size:22px; }
+  .post-date{ top:12px; right:12px; }
+}
