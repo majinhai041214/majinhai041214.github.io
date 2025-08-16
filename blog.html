@@ -14,11 +14,11 @@ permalink: /blog/
   <input id="search" class="search" type="search" placeholder="搜索标题或摘要…">
 </div>
 
-<div id="list" class="post-list">
+<ul id="list" class="post-list">
   {% for post in site.posts %}
-  <article class="post-card"
-           data-title="{{ post.title | downcase }}"
-           data-excerpt="{{ post.excerpt | strip_html | downcase }}">
+  <li class="post-card"
+      data-title="{{ post.title | downcase }}"
+      data-excerpt="{{ post.excerpt | strip_html | downcase }}">
     <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
     <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
     <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
@@ -32,15 +32,15 @@ permalink: /blog/
     {% endif %}
 
     <a class="read-link" href="{{ post.url | relative_url }}">阅读全文</a>
-  </article>
+  </li>
   {% endfor %}
-</div>
+</ul>
 
 <script>
-  // 前端搜索：过滤标题/摘要（保持单列）
+  // 前端搜索：过滤标题/摘要
   const q = document.getElementById('search');
   const cards = [...document.querySelectorAll('.post-card')];
-  q?.addEventListener('input', (e) => {
+  q?.addEventListener('input', e => {
     const s = e.target.value.trim().toLowerCase();
     cards.forEach(c => {
       const hit = c.dataset.title.includes(s) || c.dataset.excerpt.includes(s);
