@@ -4,12 +4,48 @@ title: 博客
 permalink: /blog/
 ---
 
-<h1>所有文章1</h1>
-<ul>
-  {% for post in site.posts %}
-    <li>
+<section class="blog-hero">
+  <h1>博客文章</h1>
+  <p>记录 · 学习 · 折腾</p>
+</section>
+
+<div class="top-actions">
+  <a class="back-home" href="{{ "/" | relative_url }}">← 返回首页</a>
+  <input id="search" class="search" type="search" placeholder="搜索标题或摘要…">
+</div>
+
+<div id="grid" class="post-grid">
+  {% assign posts = site.posts %}
+  {% for post in posts %}
+  <article class="post-card" data-title="{{ post.title | downcase }}" data-excerpt="{{ post.excerpt | strip_html | downcase }}">
+    <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
+    <h3 class="post-title">
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <small> · {{ post.date | date: "%Y-%m-%d" }}</small>
-    </li>
+    </h3>
+    <p class="post-excerpt">
+      {{ post.excerpt | strip_html | truncate: 120 }}
+    </p>
+    {% if post.tags and post.tags.size > 0 %}
+    <div class="tags">
+      {% for t in post.tags %}
+      <span class="tag">#{{ t }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <a class="read-link" href="{{ post.url | relative_url }}">阅读全文</a>
+  </article>
   {% endfor %}
-</ul>
+</div>
+
+<script>
+  // 简易搜索：前端过滤标题/摘要
+  const input = document.getElementById('search');
+  const cards = [...document.querySelectorAll('.post-card')];
+  input?.addEventListener('input', (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    cards.forEach(c => {
+      const hit = c.dataset.title.includes(q) || c.dataset.excerpt.includes(q);
+      c.style.display = hit ? '' : 'none';
+    });
+  });
+</script>
