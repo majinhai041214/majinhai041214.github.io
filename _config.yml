@@ -1,20 +1,28 @@
-# Site settings
-title: A blog about lorem ipsum dolor sit amet
-description: A blog about lorem ipsum dolor sit amet
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+# ===== Site settings =====
+title: Majinhai · Blog
+description: 记录 · 研究 · 折腾
+# 个人主页仓库必须留空；如果是项目页就写 "/仓库名"
+baseurl: ""
+# 你的站点域名（一定要带 https://）
+url: "https://majinhai041214.github.io"
 
-# User settings
+# ===== User settings (Particle 主题用到) =====
 username: 马锦海
-user_description: Bicycle rights irony actually neutra typewriter lyft. Man bun taxidermy put a bird on it, umami yr ramps pop-up ugh bushwick chia lo-fi. Occupy bitters pour-over snackwave you probably haven't heard of them small batch. Cornhole mustache man bun letterpress echo park VHS.
-user_title: Software Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
+user_title: Researcher & Developer
+user_description: >
+  计算机视觉 / 生成模型 / 工程实践。这里记录我的研究笔记、代码片段与想法。
+email: your_email@example.com          # ← 换成你的邮箱
+twitter_username:
+github_username: majinhai041214
+gplus_username:
 
-# Google-analytics
+# ===== Analytics（可选）=====
 google-analytics:
-  id: ""
+  id: ""                                # 有 GA 再填，如 G-XXXX
 
-exclude: ['package.json', 'src' , 'node_modules']
+# ===== Jekyll 基本项 =====
+timezone: Asia/Shanghai
+lang: zh-CN
+
+# 这些目录不参与构建
+exclude: ['package.json', 'src', 'node_modules']
