@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title }} · {{ site.title }}</title>
+
+  <!-- 样式 -->
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/post.css"  | relative_url }}">
+</head>
+<body class="post-light">
+  <main class="post-wrap">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+
+      <div class="post-meta">
+        <time>{{ page.date | date: "%Y-%m-%d" }}</time>
+        {% if page.tags and page.tags.size > 0 %}
+          <span class="dot">·</span>
+          <span class="tags">
+            {% for t in page.tags %}
+              <span class="tag">#{{ t }}</span>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+
+      {% if page.image %}
+      <figure class="post-cover">
+        <img src="{{ page.image | relative_url }}" alt="">
+      </figure>
+      {% endif %}
+    </header>
+
+    <article class="post-content">
+      {{ content }}
+    </article>
+
+    <footer class="post-footer">
+      <a class="back" href="{{ "/blog" | relative_url }}">← 返回博客</a>
+      <nav class="post-nav">
+        {% if page.previous %}
+          <a class="prev" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title }}">上一篇</a>
+        {% endif %}
+        {% if page.next %}
+          <a class="next" href="{{ page.next.url | relative_url }}" title="{{ page.next.title }}">下一篇</a>
+        {% endif %}
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>
