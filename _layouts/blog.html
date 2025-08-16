@@ -1,26 +1,39 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title }} · {{ site.title }}</title>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/blog.css"  | relative_url }}">
 </head>
 <body class="blog-dark">
-  <!-- 固定粒子背景 -->
+  <!-- 粒子背景容器 -->
   <div id="particles-js" class="particles-fixed"></div>
 
-  <!-- 内容 -->
   <main class="blog-wrap">
-    {{ content }}
+    <h1 class="blog-title">博客文章</h1>
+
+    <!-- 搜索框 -->
+    <input type="text" id="search-input" placeholder="搜索标题或摘要…">
+
+    <!-- 博客文章列表 -->
+    <ul class="post-list">
+      {% for post in site.posts %}
+      <li class="post-card">
+        <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
   </main>
 
-  <!-- 粒子脚本（Particle 主题自带） -->
+  <!-- 引入粒子脚本 -->
   <script src="{{ "/assets/js/particles.min.js" | relative_url }}"></script>
-  <script>
-    /* 复用你站点的 particles.json；如需单独配置，可改成 /assets/js/particles-blog.json */
-    particlesJS.load('particles-js', '{{ "/assets/js/particles.json" | relative_url }}');
-  </script>
+  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
 </body>
 </html>
