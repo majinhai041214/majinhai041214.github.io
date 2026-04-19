@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} · {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/algorithms.css" | relative_url }}">
+</head>
+<body class="algo-page">
+  <div class="algo-bg">
+    <div class="algo-orb orb-a"></div>
+    <div class="algo-orb orb-b"></div>
+    <div class="algo-grid"></div>
+  </div>
+
+  <main class="algo-shell">
+    {{ content }}
+  </main>
+
+  <footer class="algo-footer">
+    <div class="algo-footer-inner">
+      <p>{{ site.username }} · 算法学习站</p>
+      <div class="algo-footer-links">
+        <a href="{{ "/blog/" | relative_url }}">博客文章</a>
+        <a href="{{ "/" | relative_url }}">返回首页</a>
+        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

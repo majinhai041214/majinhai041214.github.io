@@ -32,6 +32,22 @@
   border:1px solid var(--border); padding:8px 12px; border-radius:10px;
   background: rgba(255,255,255,.04);
 }
+.algo-link{
+  text-decoration:none;
+  color:#07111f !important;
+  border:none !important;
+  padding:9px 14px;
+  border-radius:10px;
+  background: linear-gradient(90deg, #5ad1ff, #ffd166);
+  box-shadow: 0 10px 22px rgba(90,209,255,.22);
+  font-weight:700;
+  white-space:nowrap;
+}
+.algo-link:hover{
+  color:#07111f !important;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(90,209,255,.3);
+}
 .search{
   flex:1; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
   color:var(--txt); background: rgba(255,255,255,.04); outline:none;
@@ -83,6 +99,8 @@
 /* 响应式微调 */
 @media (max-width:520px){
   .post-title{ font-size:20px; }
+  .top-actions{ flex-wrap:wrap; }
+  .algo-link{ order:3; }
 }
 /* 1) 让“博客文章”剧中（包含副标题） */
 .blog-hero{
