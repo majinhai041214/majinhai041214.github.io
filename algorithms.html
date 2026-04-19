@@ -10,27 +10,28 @@ description: 刷题路线、算法专题与训练方法整理
     <span class="algo-kicker">Algorithm Notebook</span>
     <h1>把算法学习做成一条清晰、能持续推进的路线</h1>
     <p>
-      这里会集中整理数据结构、经典题型、思路拆解和训练节奏，
-      用一个更适合长期积累的方式记录我的算法学习过程。
+      这里不仅是算法专题页，也是你的每日学习工作台。
+      你可以在这里打卡、上传 Markdown 笔记和代码文件、按专题分类整理，
+      同时在网页里直接阅读笔记并给 Markdown 行添加批注。
     </p>
 
     <div class="algo-cta-row">
-      <a class="algo-primary" href="#roadmap">查看学习路线</a>
-      <a class="algo-secondary" href="{{ "/blog/" | relative_url }}">返回个人博客</a>
+      <a class="algo-primary" href="#checkin">开始今日打卡</a>
+      <a class="algo-secondary" href="#library">打开学习资料库</a>
     </div>
 
     <ul class="algo-stat-list">
       <li>
-        <strong>4</strong>
-        <span>学习阶段</span>
+        <strong id="stat-days">0</strong>
+        <span>累计打卡天数</span>
       </li>
       <li>
-        <strong>12+</strong>
-        <span>核心专题</span>
+        <strong id="stat-notes">0</strong>
+        <span>Markdown 笔记</span>
       </li>
       <li>
-        <strong>长期</strong>
-        <span>持续迭代</span>
+        <strong id="stat-code">0</strong>
+        <span>代码文件</span>
       </li>
     </ul>
   </div>
@@ -41,20 +42,112 @@ description: 刷题路线、算法专题与训练方法整理
         <span></span><span></span><span></span>
       </div>
       <pre><code>while (still_learning) {
-  build(topic_map);
-  solve(classic_problems);
-  review(mistakes);
-  summarize(patterns);
+  checkIn(today);
+  upload(noteMarkdown);
+  save(codeByCategory);
+  annotate(keyIdeas);
+  revisit(commonMistakes);
 }</code></pre>
     </div>
     <div class="algo-mini-card">
       <p>当前目标</p>
-      <strong>从“会做题”走向“会建模”</strong>
+      <strong>把刷题记录、笔记与代码沉淀成长期资产</strong>
     </div>
   </div>
 </section>
 
-<section class="algo-section" id="roadmap">
+<section class="algo-section" id="checkin">
+  <div class="algo-section-head">
+    <span>Check In</span>
+    <h2>每日打卡台</h2>
+  </div>
+
+  <div class="algo-workbench">
+    <article class="algo-panel algo-checkin-panel">
+      <div class="algo-panel-head">
+        <h3>上传今天的学习内容</h3>
+        <p>支持 Markdown 学习笔记和代码文件，都会按专题归档。</p>
+      </div>
+
+      <form id="checkin-form" class="algo-form">
+        <div class="algo-form-grid">
+          <label class="algo-field">
+            <span>打卡日期</span>
+            <input id="checkin-date" name="checkin-date" type="date" required>
+          </label>
+
+          <label class="algo-field">
+            <span>学习专题</span>
+            <select id="checkin-category" name="checkin-category">
+              <option value="基础数据结构">基础数据结构</option>
+              <option value="搜索与回溯">搜索与回溯</option>
+              <option value="动态规划">动态规划</option>
+              <option value="图论">图论</option>
+              <option value="字符串">字符串</option>
+              <option value="数学与技巧">数学与技巧</option>
+              <option value="综合训练">综合训练</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="algo-field">
+          <span>今日标题</span>
+          <input id="checkin-title" name="checkin-title" type="text" placeholder="例如：Day 12 · 背包问题入门" required>
+        </label>
+
+        <label class="algo-field">
+          <span>学习摘要</span>
+          <textarea id="checkin-summary" name="checkin-summary" rows="4" placeholder="今天刷了什么题、卡在哪里、复盘到了哪些知识点"></textarea>
+        </label>
+
+        <div class="algo-upload-grid">
+          <label class="algo-upload-card">
+            <span class="algo-upload-title">学习笔记（.md）</span>
+            <input id="note-file" name="note-file" type="file" accept=".md,text/markdown">
+            <small>上传 Markdown 笔记，系统会支持网页渲染与逐行批注。</small>
+          </label>
+
+          <label class="algo-upload-card">
+            <span class="algo-upload-title">代码文件</span>
+            <input id="code-files" name="code-files" type="file" multiple accept=".py,.cpp,.c,.java,.js,.ts,.go,.rs,.sql,.txt">
+            <small>可以一次上传多个代码文件，会自动归到你当前选择的专题分类下。</small>
+          </label>
+        </div>
+
+        <div class="algo-form-actions">
+          <button class="algo-primary algo-button" type="submit">保存今日打卡</button>
+          <p id="form-status" class="algo-form-status">数据仅保存在当前浏览器中，方便你先把工作流用起来。</p>
+        </div>
+      </form>
+    </article>
+
+    <aside class="algo-panel algo-side-panel">
+      <div class="algo-panel-head">
+        <h3>打卡概览</h3>
+        <p>这里会根据你已保存的数据自动更新。</p>
+      </div>
+
+      <div class="algo-streak-card">
+        <span>连续打卡</span>
+        <strong id="streak-count">0 天</strong>
+        <p id="today-status">今天还没有打卡记录</p>
+      </div>
+
+      <div class="algo-mini-list">
+        <div class="algo-mini-item">
+          <span>最近打卡</span>
+          <strong id="recent-checkin-title">暂无记录</strong>
+        </div>
+        <div class="algo-mini-item">
+          <span>当前专题分布</span>
+          <div id="category-chips" class="algo-chip-row"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="algo-section">
   <div class="algo-section-head">
     <span>Roadmap</span>
     <h2>学习路线</h2>
@@ -84,58 +177,71 @@ description: 刷题路线、算法专题与训练方法整理
   </div>
 </section>
 
-<section class="algo-section">
+<section class="algo-section" id="library">
   <div class="algo-section-head">
-    <span>Topics</span>
-    <h2>核心专题</h2>
+    <span>Library</span>
+    <h2>学习资料库</h2>
   </div>
 
-  <div class="algo-topic-grid">
-    <article class="algo-topic-card">
-      <h3>数据结构</h3>
-      <p>数组、链表、哈希表、堆、单调栈、并查集。</p>
+  <div class="algo-library-grid">
+    <article class="algo-panel">
+      <div class="algo-panel-head">
+        <h3>Markdown 笔记</h3>
+        <p>点击笔记即可在右侧阅读并进行逐行批注。</p>
+      </div>
+      <div id="notes-list" class="algo-entry-list"></div>
     </article>
-    <article class="algo-topic-card">
-      <h3>搜索</h3>
-      <p>DFS / BFS / 回溯模板、剪枝思路与状态设计。</p>
-    </article>
-    <article class="algo-topic-card">
-      <h3>动态规划</h3>
-      <p>状态定义、转移来源、滚动优化和常见题型分层。</p>
-    </article>
-    <article class="algo-topic-card">
-      <h3>图论</h3>
-      <p>最短路、拓扑排序、最小生成树、染色与连通性。</p>
-    </article>
-    <article class="algo-topic-card">
-      <h3>字符串</h3>
-      <p>KMP、Trie、哈希、模式匹配和高频子串问题。</p>
-    </article>
-    <article class="algo-topic-card">
-      <h3>数学与技巧</h3>
-      <p>前缀和、差分、快速幂、位运算、组合计数与构造法。</p>
+
+    <article class="algo-panel">
+      <div class="algo-panel-head">
+        <h3>代码文件</h3>
+        <p>代码会按你打卡时选择的专题统一归档。</p>
+      </div>
+      <div id="code-list" class="algo-entry-list"></div>
     </article>
   </div>
 </section>
 
 <section class="algo-section">
   <div class="algo-section-head">
-    <span>Method</span>
-    <h2>训练方法</h2>
+    <span>Reader</span>
+    <h2>Markdown 阅读与批注</h2>
   </div>
 
-  <div class="algo-method-grid">
-    <article class="algo-method-card">
-      <h3>先建题型地图</h3>
-      <p>先分辨题目属于什么模型，再决定用哪类解法，而不是看到题就立刻写代码。</p>
+  <div class="algo-reader-grid">
+    <article class="algo-panel algo-reader-panel">
+      <div class="algo-panel-head">
+        <h3 id="reader-title">选择一篇笔记开始阅读</h3>
+        <p id="reader-meta">支持 Markdown 渲染、源码查看与行级批注。</p>
+      </div>
+      <div id="rendered-markdown" class="algo-rendered">
+        <div class="algo-empty-state">还没有选中笔记，先在上方资料库中打开一篇 Markdown。</div>
+      </div>
     </article>
-    <article class="algo-method-card">
-      <h3>保留错题轨迹</h3>
-      <p>把 WA、TLE、边界条件和错误状态转移单独记录，复盘的价值往往大于 AC 本身。</p>
-    </article>
-    <article class="algo-method-card">
-      <h3>沉淀模板与思路</h3>
-      <p>每个专题最后都落成“模板 + 适用条件 + 常见坑点”，方便以后快速回忆。</p>
+
+    <article class="algo-panel algo-source-panel">
+      <div class="algo-panel-head">
+        <h3>源文件与批注</h3>
+        <p>点击左侧行号可以把这一行设为当前批注目标。</p>
+      </div>
+
+      <div id="annotation-target" class="algo-annotation-target">当前未选择具体行</div>
+
+      <form id="annotation-form" class="algo-annotation-form">
+        <textarea id="annotation-text" rows="3" placeholder="记录这一行的思路、坑点、疑问或待复习内容"></textarea>
+        <button class="algo-secondary algo-button" type="submit">保存批注</button>
+      </form>
+
+      <div id="source-lines" class="algo-source-lines">
+        <div class="algo-empty-state">笔记源码会显示在这里，并支持行级批注。</div>
+      </div>
+
+      <div class="algo-annotation-block">
+        <h4>当前笔记批注</h4>
+        <div id="annotation-list" class="algo-annotation-list">
+          <div class="algo-empty-state">当前还没有批注。</div>
+        </div>
+      </div>
     </article>
   </div>
 </section>
@@ -144,8 +250,8 @@ description: 刷题路线、算法专题与训练方法整理
   <div class="algo-banner">
     <div>
       <span class="algo-banner-kicker">Next Step</span>
-      <h2>后续可以逐步加入你的刷题笔记、模板库和专题文章</h2>
+      <h2>你后面可以继续把题解、模板库、错题复盘页都接进这个工作台</h2>
     </div>
-    <a class="algo-primary" href="{{ "/blog/" | relative_url }}">先回到博客继续写作</a>
+    <a class="algo-primary" href="{{ "/blog/" | relative_url }}">返回个人博客</a>
   </div>
 </section>

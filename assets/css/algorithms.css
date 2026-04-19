@@ -328,6 +328,389 @@
   border-radius: 28px;
 }
 
+.algo-panel {
+  border: 1px solid var(--algo-line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow: var(--algo-shadow);
+  backdrop-filter: blur(14px);
+  padding: 24px;
+}
+
+.algo-panel-head h3,
+.algo-annotation-block h4 {
+  margin: 0 0 8px;
+  padding-top: 0;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.algo-panel-head p,
+.algo-annotation-block p {
+  margin: 0;
+  color: var(--algo-muted);
+}
+
+.algo-workbench,
+.algo-library-grid,
+.algo-reader-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.algo-workbench {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+}
+
+.algo-library-grid,
+.algo-reader-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.algo-form {
+  margin-top: 20px;
+}
+
+.algo-form-grid,
+.algo-upload-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.algo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.algo-field span,
+.algo-upload-title {
+  color: #dff3ff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.algo-field input,
+.algo-field select,
+.algo-field textarea,
+.algo-annotation-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: rgba(4, 17, 31, 0.62);
+  color: var(--algo-text);
+  padding: 14px 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.algo-field textarea,
+.algo-annotation-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.algo-upload-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(4, 17, 31, 0.45);
+  padding: 18px;
+  cursor: pointer;
+}
+
+.algo-upload-card small,
+.algo-form-status,
+.algo-mini-item span,
+.algo-entry-card p,
+.algo-code-entry p,
+.algo-code-entry small,
+.algo-annotation-target,
+.algo-empty-state {
+  color: var(--algo-muted);
+}
+
+.algo-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.algo-button {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.algo-form-status.is-error {
+  color: #ffb1a7;
+}
+
+.algo-streak-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(90, 209, 255, 0.16), rgba(73, 243, 179, 0.08));
+  border: 1px solid rgba(90, 209, 255, 0.24);
+}
+
+.algo-streak-card span {
+  display: block;
+  color: #d8f4ff;
+}
+
+.algo-streak-card strong {
+  display: block;
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.algo-streak-card p {
+  margin: 10px 0 0;
+  color: var(--algo-muted);
+}
+
+.algo-mini-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.algo-mini-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+}
+
+.algo-mini-item strong {
+  display: block;
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.algo-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.algo-chip,
+.algo-empty-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #dff3ff;
+  font-size: 13px;
+}
+
+.algo-entry-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.algo-entry-card,
+.algo-code-entry {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(4, 17, 31, 0.5);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.algo-entry-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.algo-entry-card.is-active,
+.algo-entry-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(90, 209, 255, 0.35);
+  background: rgba(10, 31, 54, 0.75);
+}
+
+.algo-entry-kind {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(90, 209, 255, 0.12);
+  color: #c8efff;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.algo-entry-card strong,
+.algo-code-entry strong {
+  display: block;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.algo-entry-card p,
+.algo-entry-card small,
+.algo-code-entry p {
+  margin: 8px 0 0;
+}
+
+.algo-code-entry-head {
+  display: flex;
+  flex-direction: column;
+}
+
+.algo-code-entry pre,
+.algo-source-line code {
+  margin: 14px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.algo-rendered {
+  margin-top: 18px;
+  min-height: 360px;
+}
+
+.algo-rendered h1,
+.algo-rendered h2,
+.algo-rendered h3 {
+  padding-top: 0;
+  color: #ffffff;
+}
+
+.algo-rendered p,
+.algo-rendered li,
+.algo-rendered blockquote {
+  color: #d6e6f7;
+  line-height: 1.8;
+}
+
+.algo-rendered a {
+  color: var(--algo-accent);
+}
+
+.algo-rendered blockquote,
+.algo-rendered pre,
+.algo-code-entry pre {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(4, 17, 31, 0.72);
+  padding: 16px;
+  overflow: auto;
+}
+
+.algo-rendered code,
+.algo-code-entry code,
+.algo-source-line code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.algo-annotation-target {
+  margin-top: 18px;
+}
+
+.algo-annotation-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.algo-source-lines {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  max-height: 430px;
+  overflow: auto;
+}
+
+.algo-source-line {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(4, 17, 31, 0.5);
+  color: var(--algo-text);
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.algo-source-line.has-comment {
+  border-color: rgba(90, 209, 255, 0.28);
+}
+
+.algo-source-line.is-selected {
+  border-color: rgba(255, 209, 102, 0.38);
+  background: rgba(48, 37, 10, 0.34);
+}
+
+.algo-line-no {
+  color: #86a9c8;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.algo-line-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(90, 209, 255, 0.16);
+  color: #d8f4ff;
+  font-size: 12px;
+}
+
+.algo-annotation-block {
+  margin-top: 22px;
+}
+
+.algo-annotation-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.algo-annotation-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(4, 17, 31, 0.48);
+  padding: 16px;
+}
+
+.algo-annotation-item strong {
+  color: #ffffff;
+}
+
+.algo-annotation-item p {
+  margin: 8px 0;
+  color: #d6e6f7;
+  line-height: 1.75;
+}
+
+.algo-annotation-item small {
+  color: var(--algo-muted);
+}
+
 .algo-banner h2 {
   max-width: 720px;
 }
@@ -372,7 +755,10 @@
   .algo-topic-grid,
   .algo-method-grid,
   .algo-banner,
-  .algo-footer-inner {
+  .algo-footer-inner,
+  .algo-workbench,
+  .algo-library-grid,
+  .algo-reader-grid {
     grid-template-columns: 1fr;
     display: grid;
   }
@@ -390,7 +776,9 @@
   .algo-roadmap,
   .algo-topic-grid,
   .algo-method-grid,
-  .algo-stat-list {
+  .algo-stat-list,
+  .algo-form-grid,
+  .algo-upload-grid {
     grid-template-columns: 1fr;
   }
 
@@ -404,7 +792,18 @@
   .algo-method-card,
   .algo-banner,
   .algo-code-card,
-  .algo-mini-card {
+  .algo-mini-card,
+  .algo-panel {
     border-radius: 20px;
+  }
+
+  .algo-source-line {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .algo-line-badge {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 8px;
   }
 }
